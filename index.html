@@ -18,7 +18,7 @@
       <ul>
         <li><a href="#" id="firstUnitWorks">第一單元作品</a></li>
         <li><a href="#" id="firstUnitNotes">第一單元講義</a></li>
-        <li><a href="#">測驗系統</a></li>
+        <li><a href="#" id="quizSystem">測驗系統</a></li>
         <li><a href="#">回到首頁</a></li>
       </ul>
     </nav>
@@ -35,8 +35,10 @@
       (function(){
         const url1 = 'https://vincent950928-eng.github.io/20251020/';
         const url2 = 'https://hackmd.io/@oFfjbdXYRC-RDOnVZOnbpw/S1NgwmCsee';
+        const url3 = 'https://vincent950928-eng.github.io/20251103-/';
         const btn1 = document.getElementById('firstUnitWorks');
         const btn2 = document.getElementById('firstUnitNotes');
+        const btn3 = document.getElementById('quizSystem');
         const overlay = document.getElementById('iframeOverlay');
         const iframe = document.getElementById('contentFrame');
         const closeBtn = document.getElementById('iframeClose');
@@ -57,6 +59,7 @@
 
         btn1.addEventListener('click', function(e){ e.preventDefault(); openIframe(url1); });
         btn2.addEventListener('click', function(e){ e.preventDefault(); openIframe(url2); });
+        btn3.addEventListener('click', function(e){ e.preventDefault(); openIframe(url3); });
         closeBtn.addEventListener('click', function(e){ e.stopPropagation(); closeIframe(); });
 
         // Click outside container closes
