@@ -1,8 +1,118 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 canvas {
   display: block;
 }
+
+/* Side menu trigger: invisible strip on the left 100px */
+#menuTrigger {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100vh;
+  z-index: 30;
+  background: transparent;
+}
+
+/* Side menu */
+#sideMenu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 320px;
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  background: rgba(20,20,20,0.98);
+  color: #fff;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+}
+
+/* When hovering the trigger or the menu, slide it in */
+#menuTrigger:hover + #sideMenu,
+#sideMenu:hover {
+  transform: translateX(0);
+}
+
+#sideMenu ul {
+  list-style: none;
+  padding: 0 24px;
+  margin: 0;
+  width: 100%;
+}
+
+#sideMenu li {
+  margin: 18px 0;
+}
+
+#sideMenu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 32px;
+  display: inline-block;
+}
+
+/* Ensure canvas sits above the page but below the menu */
+canvas {
+  z-index: 10;
+  position: relative;
+}
+
+/* Iframe overlay styles */
+#iframeOverlay {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.65);
+  z-index: 200;
+}
+
+#iframeContainer {
+  position: relative;
+  width: 70vw; /* 70% of viewport width */
+  height: 85vh; /* 85% of viewport height */
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+#iframeContainer iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+#iframeClose {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  z-index: 10;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
