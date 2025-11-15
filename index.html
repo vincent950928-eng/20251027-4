@@ -3,34 +3,66 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Sketch</title>
+
     <link rel="stylesheet" type="text/css" href="style.css">
+
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-      #contentIframe {
-        border: none;
-        background: white;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      }
-      #closeBtn {
-        position: fixed;
-        z-index: 1001;
-        background: rgba(0,0,0,0.7);
-        color: white;
-        border: none;
-        padding: 8px 12px;
-        cursor: pointer;
-        border-radius: 4px;
-      }
-    </style>
   </head>
+
   <body>
+    <div id="menuTrigger" aria-hidden="true"></div>
+    <nav id="sideMenu" aria-label="側邊選單">
+      <ul>
+        <li><a href="#" id="firstUnitWorks">第一單元作品</a></li>
+        <li><a href="#" id="firstUnitNotes">第一單元講義</a></li>
+        <li><a href="#">測驗系統</a></li>
+        <li><a href="#">回到首頁</a></li>
+      </ul>
+    </nav>
+
+    <!-- IFrame overlay: initially hidden -->
+    <div id="iframeOverlay" role="dialog" aria-hidden="true">
+      <div id="iframeContainer">
+        <button id="iframeClose" aria-label="關閉">✕</button>
+        <iframe id="contentFrame" src="" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        const url1 = 'https://vincent950928-eng.github.io/20251020/';
+        const url2 = 'https://hackmd.io/@oFfjbdXYRC-RDOnVZOnbpw/S1NgwmCsee';
+        const btn1 = document.getElementById('firstUnitWorks');
+        const btn2 = document.getElementById('firstUnitNotes');
+        const overlay = document.getElementById('iframeOverlay');
+        const iframe = document.getElementById('contentFrame');
+        const closeBtn = document.getElementById('iframeClose');
+
+        function openIframe(u){
+          iframe.src = u;
+          overlay.style.display = 'flex';
+          overlay.setAttribute('aria-hidden','false');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeIframe(){
+          iframe.src = '';
+          overlay.style.display = 'none';
+          overlay.setAttribute('aria-hidden','true');
+          document.body.style.overflow = '';
+        }
+
+        btn1.addEventListener('click', function(e){ e.preventDefault(); openIframe(url1); });
+        btn2.addEventListener('click', function(e){ e.preventDefault(); openIframe(url2); });
+        closeBtn.addEventListener('click', function(e){ e.stopPropagation(); closeIframe(); });
+
+        // Click outside container closes
+        overlay.addEventListener('click', function(e){ if(e.target === overlay) closeIframe(); });
+      })();
+    </script>
     <script src="sketch.js"></script>
   </body>
 </html>
