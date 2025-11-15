@@ -115,4 +115,25 @@ canvas {
   cursor: pointer;
 }
 
+/* Submenu styles */
+.submenu-parent .submenu {
+  display: none; /* 預設隱藏子選單 */
+  list-style: none;
+  padding-left: 20px; /* 增加縮排以表示層級 */
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.submenu-parent:hover .submenu {
+  display: block; /* 滑鼠移到父層時顯示子選單 */
+}
+
+.rye-regular {
+  font-family: "Rye", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 
