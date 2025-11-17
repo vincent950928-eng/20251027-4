@@ -48,11 +48,11 @@ function draw() {
 	textY = lerp(startY, endY, easedProgress);
 
 	// 在畫布中央繪製文字
-	textSize(120);
+	textSize(80);
 	fill(255, 255, 255, 150); // 設定文字顏色與透明度 (白色，稍微透明)
 	textAlign(CENTER, CENTER);
 	// 繪製文字
-	text('淡江大學', width / 2, textY);
+	text('教科系一B 陳威成', width / 2, textY);
 }
 
 // Easing function: easeOutBounce
